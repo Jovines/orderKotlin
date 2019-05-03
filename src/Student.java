@@ -46,8 +46,25 @@ public class Student {
 
     Student add(int workDay, int dayTime) {
         suitableSchedule[workDay - 1][dayTime - 1] = true;
-        freeTimeCount++;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (suitableSchedule[i][j]) {
+                    freeTimeCount++;
+                }
+            }
+        }
         return this;
+    }
+
+    public void remove(int workDay, int dayTime) {
+        suitableSchedule[workDay - 1][dayTime - 1] = false;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (suitableSchedule[i][j]) {
+                    freeTimeCount++;
+                }
+            }
+        }
     }
 
     boolean check(int workDay, int dayTime) {
