@@ -46,6 +46,7 @@ public class Student {
 
     Student add(int workDay, int dayTime) {
         suitableSchedule[workDay - 1][dayTime - 1] = true;
+        freeTimeCount = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
                 if (suitableSchedule[i][j]) {
