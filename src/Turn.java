@@ -19,6 +19,7 @@ public class Turn {
 
     /**
      * 获取当前班次所有学生的空闲班次的总和
+     *
      * @return 学生们所剩空闲时间总和
      */
     int getAllStudentCanCount() {
@@ -35,8 +36,19 @@ public class Turn {
         student.addSuitableTurn(this);
     }
 
+    public void reset() {
+        maxStudentCount = 0;
+        for (int i = 0, j = students.size(); i < j; i++) {
+            students.remove(0);
+        }
+        for (int i = 0, j = fixedStudents.size(); i < j; i++) {
+            fixedStudents.remove(0);
+        }
+    }
+
     /**
      * 把班次和学生进行互相绑定
+     *
      * @param student 需要绑定的学生
      */
     void addFixedStudengt(Student student) {
@@ -68,11 +80,11 @@ public class Turn {
         return students;
     }
 
-    int getDayTime() {
+    public int getDayTime() {
         return dayTime;
     }
 
-    int getWorkDay() {
+    public int getWorkDay() {
         return workDay;
     }
 

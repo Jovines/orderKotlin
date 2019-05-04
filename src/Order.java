@@ -20,6 +20,10 @@ public class Order {
         return students;
     }
 
+    public List<Turn> getFixedTurns() {
+        return fixedTurns;
+    }
+
     private Order() {
         students = new ArrayList<>();
         turns = new ArrayList<>();

@@ -8,7 +8,16 @@ public class Main {
         Main.init();
         Order.getInstance().order();
 
-
+        List<Turn> t = Order.getInstance().getFixedTurns();
+//        List<Student> students = new ArrayList<>();
+//        for (int i = 0; i < 10; i++) {
+//            students.add(new Student(i+""));
+//        }
+//
+//        for (int i = 0,j=students.size(); i <j ; i++) {
+//            students.remove(0);
+//        }
+        System.out.println();
     }
 
 
