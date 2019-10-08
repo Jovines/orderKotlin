@@ -13,13 +13,24 @@ public class Main {
         Main.init();
         OrderScene orderScene = new OrderScene("");
         orderScene.addStudentAll(init());
-        System.out.printf("");
+        System.out.printf(orderScene.getFixedTurns().toString());
+        System.out.println(orderScene.getFixedTurns().size());
+        System.out.println(orderScene.getStudents().size());
     }
 
 
     static public List<Student> init() {
         List<Student> students = new ArrayList<>();
-        students.add(new Student("ËÕÑÇÖİ")
+
+
+        students.add(new Student("ä¸å¾·æ¡¥")
+                .add(1, 4)
+                .add(3, 4)
+                .add(4, 3)
+                .add(2, 2)
+        );
+
+        students.add(new Student("è‹äºšå·")
                 .add(3, 1)
                 .add(4, 1)
                 .add(3, 2)
@@ -27,31 +38,31 @@ public class Main {
                 .add(4, 3)
                 .add(1, 4)
         );
-        students.add(new Student("ÖìÓÜÌÎ")
+        students.add(new Student("æœ±æ¦†æ¶›")
                 .add(2, 3)
                 .add(4, 3)
                 .add(1, 4)
                 .add(3, 4)
         );
-        students.add(new Student("Áõ´óÔó")
+        students.add(new Student("åˆ˜å¤§æ³½")
                 .add(2, 1)
                 .add(4, 1)
                 .add(1, 4)
         );
-        students.add(new Student("Íõ¾ıÈ»")
+        students.add(new Student("ç‹å›ç„¶")
                 .add(2, 1)
                 .add(4, 2)
                 .add(1, 4)
                 .add(4, 4)
         );
-        students.add(new Student("ÕÅÎÄ½­")
+        students.add(new Student("å¼ æ–‡æ±Ÿ")
                 .add(1, 1)
                 .add(2, 1)
                 .add(4, 1)
                 .add(2, 2)
                 .add(1, 4)
         );
-        students.add(new Student("ÀîÔÂÔÂ")
+        students.add(new Student("ææœˆæœˆ")
                 .add(1, 1)
                 .add(3, 1)
                 .add(5, 1)
@@ -59,7 +70,7 @@ public class Main {
                 .add(4, 3)
                 .add(1, 4)
         );
-        students.add(new Student("¾´ÇåÇå")
+        students.add(new Student("æ•¬æ¸…æ¸…")
                 .add(1, 1)
                 .add(4, 1)
                 .add(2, 1)
@@ -68,37 +79,37 @@ public class Main {
                 .add(4, 4)
                 .add(5, 4)
         );
-        students.add(new Student("ÀîöÎ")
+        students.add(new Student("æé‘«")
                 .add(1, 4)
                 .add(2, 4)
                 .add(4, 2)
                 .add(4, 3)
                 .add(4, 4)
         );
-        students.add(new Student("Íõ°Ä¸è")
+        students.add(new Student("ç‹æ¾³æ­Œ")
                 .add(1, 4)
                 .add(3, 3)
                 .add(4, 3)
         );
-        students.add(new Student("ÌÆöÎ")
+        students.add(new Student("å”é‘«")
                 .add(1, 3)
                 .add(1, 4)
                 .add(4, 2)
                 .add(4, 4)
         );
-        students.add(new Student("ÖÜÏãÁ¯")
+        students.add(new Student("å‘¨é¦™æ€œ")
                 .add(1, 3)
                 .add(1, 4)
                 .add(4, 2)
                 .add(4, 4)
         );
-        students.add(new Student("ÕÅ´¨")
+        students.add(new Student("å¼ å·")
                 .add(1, 4)
                 .add(4, 1)
                 .add(4, 4)
                 .add(5, 3)
         );
-        students.add(new Student("ÁõºÆè¤")
+        students.add(new Student("åˆ˜æµ©ç‘œ")
                 .add(1, 1)
                 .add(2, 1)
                 .add(5, 2)
@@ -107,22 +118,23 @@ public class Main {
                 .add(4, 4)
                 .add(5, 4)
         );
-        students.add(new Student("ÏÄ D")
+        students.add(new Student("å¤ç‡š")
                 .add(1, 4)
+                .add(2, 2)
                 .add(4, 3)
         );
-        students.add(new Student("ÔøÆôºê")
-                .add(1, 1)
-                .add(3, 1)
-                .add(4, 2)
-                .add(3, 3)
-                .add(1, 3)
-                .add(1, 4)
-                .add(2, 4)
-                .add(4, 4)
-                .add(5, 4)
-        );
-        students.add(new Student("ºÎ½õÓî")
+//        students.add(new Student("æ›¾å¯å®")
+//                .add(1, 1)
+//                .add(3, 1)
+//                .add(4, 2)
+//                .add(3, 3)
+//                .add(1, 3)
+//                .add(1, 4)
+//                .add(2, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
+        students.add(new Student("ä½•é”¦å®‡")
                 .add(1, 1)
                 .add(3, 1)
                 .add(4, 1)
@@ -133,28 +145,17 @@ public class Main {
                 .add(4, 4)
                 .add(5, 4)
         );
-        students.add(new Student("Àîäì")
-                .add(1, 1)
-                .add(3, 1)
-                .add(5, 1)
-                .add(2, 2)
-                .add(1, 4)
-                .add(2, 4)
-                .add(4, 4)
-                .add(5, 4)
-        );
-        students.add(new Student("ÂŞ¿¬Ô´")
-                .add(1, 1)
-                .add(2, 1)
-                .add(5, 1)
-                .add(4, 2)
-                .add(3, 3)
-                .add(1, 4)
-                .add(2, 4)
-                .add(4, 4)
-                .add(5, 4)
-        );
-        students.add(new Student("ÇØÑÒ½Ü")
+//        students.add(new Student("ææ½‡")
+//                .add(1, 1)
+//                .add(3, 1)
+//                .add(5, 1)
+//                .add(2, 2)
+//                .add(1, 4)
+//                .add(2, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
+        students.add(new Student("ç½—æ¥·æº")
                 .add(1, 1)
                 .add(2, 1)
                 .add(5, 1)
@@ -165,7 +166,18 @@ public class Main {
                 .add(4, 4)
                 .add(5, 4)
         );
-        students.add(new Student("ÌÆ½ü")
+//        students.add(new Student("ç§¦å²©æ°")
+//                .add(1, 1)
+//                .add(2, 1)
+//                .add(5, 1)
+//                .add(4, 2)
+//                .add(3, 3)
+//                .add(1, 4)
+//                .add(2, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
+        students.add(new Student("å”è¿‘")
                 .add(3, 1)
                 .add(5, 1)
                 .add(1, 3)
@@ -175,45 +187,61 @@ public class Main {
                 .add(4, 4)
                 .add(5, 4)
         );
-        students.add(new Student("Ğ»ÖĞÁÖ")
-                .add(1, 4)
-                .add(2, 4)
-                .add(4, 4)
-                .add(5, 4)
-        );
-        students.add(new Student("ĞÜĞ¡è±")
+//        students.add(new Student("è°¢ä¸­æ—")
+//                .add(1, 4)
+//                .add(2, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
+        students.add(new Student("ç†Šå°ç’")
                 .add(1, 1)
                 .add(3, 1)
                 .add(2, 2)
                 .add(4, 2)
                 .add(1, 4)
                 .add(2, 4)
-                .add(4, 4)
-                .add(5, 4)
-        );
-        students.add(new Student("Ò¶Óñ·å")
-                .add(1, 1)
-                .add(3, 1)
-                .add(5, 1)
-                .add(1, 3)
-                .add(2, 3)
-                .add(3, 3)
-                .add(1, 4)
                 .add(4, 4)
                 .add(5, 4)
         );
 
-        students.add(new Student("ÕÅÅôÕ¹")
+        students.add(new Student("è¢é’°é’¿")
                 .add(1, 1)
-                .add(3, 1)
-                .add(5, 1)
-                .add(2, 2)
-                .add(3, 3)
                 .add(1, 4)
+                .add(2, 2)
                 .add(2, 4)
+                .add(3, 1)
+                .add(4, 1)
+                .add(4, 2)
                 .add(4, 4)
                 .add(5, 4)
         );
+
+
+//        students.add(new Student("å¶ç‰å³°")
+//                .add(1, 1)
+//                .add(3, 1)
+//                .add(5, 1)
+//                .add(1, 3)
+//                .add(2, 3)
+//                .add(3, 3)
+//                .add(1, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
+
+
+
+//        students.add(new Student("å¼ é¹å±•")
+//                .add(1, 1)
+//                .add(3, 1)
+//                .add(5, 1)
+//                .add(2, 2)
+//                .add(3, 3)
+//                .add(1, 4)
+//                .add(2, 4)
+//                .add(4, 4)
+//                .add(5, 4)
+//        );
 
         return students;
     }

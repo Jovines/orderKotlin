@@ -106,9 +106,15 @@ public class Turn implements Serializable {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
+                .append("星期")
+                .append(workDay)
                 .append("第")
                 .append(dayTimeChange(this))
                 .append("节课：");
+        for (Student s : fixedStudents) {
+            stringBuilder.append(s);
+        }
+        stringBuilder.append("\n");
         return stringBuilder.toString();
     }
 
