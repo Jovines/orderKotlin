@@ -1,16 +1,26 @@
+package order;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable{
 
     private String name;
-    private boolean[][] suitableSchedule;//��ʣʱ���
+    private boolean[][] suitableSchedule;//还剩时间表
     private List<Turn> suitableTurns;
-    private boolean[][] totalSchedule;//ʱ���
-    private int totalTimeCount = 0;//ʱ����ϵĿ���ʱ��
-    private int freeTimeCount = 0;//��ʣ�Ŀ���ʱ��
-    private List<Turn> fixedTurns;
-    private int fixedCount = 0;//�Ѿ��������˶��ٴ�
+    private boolean[][] totalSchedule;//时间表
+    private int totalTimeCount = 0;//时间表上的空闲时间
+    private int freeTimeCount = 0;//还剩的空闲时间
+    private List<Turn> fixedTurns;//已经安排的轮次
+    private int fixedCount = 0;//已经被安排了多少次
+    private List<OrderScene> orderSceneList;//被安排的场景
+
+
+    private int studentShouldBeFixed = 2;
+
+
+
 
     public Student(String name) {
         this();
@@ -18,6 +28,7 @@ public class Student {
     }
 
     public Student() {
+        orderSceneList = new ArrayList<>();
         fixedTurns = new ArrayList<>();
         suitableTurns = new ArrayList<>();
         suitableSchedule = new boolean[5][4];
@@ -34,6 +45,24 @@ public class Student {
         suitableTurns.add(turn);
     }
 
+    public void addOrderScene(OrderScene orderScene) {
+        if (!orderSceneList.contains(orderScene)) {
+            this.orderSceneList.add(orderScene);
+        }
+        if (!orderScene.getStudents().contains(this)) {
+            orderScene.addStudent(this);
+        }
+    }
+
+    public void removeOrderScene(OrderScene orderScene) {
+        orderSceneList.remove(orderScene);
+        reset();
+    }
+
+    public List<OrderScene> getOrderSceneList() {
+        return orderSceneList;
+    }
+
     public void reset() {
         freeTimeCount = totalTimeCount;
         fixedCount = 0;
@@ -47,6 +76,26 @@ public class Student {
             for (int j = 0; j < 4; j++) {
                 suitableSchedule[i][j] = totalSchedule[i][j];
             }
+        }
+    }
+
+
+    public void copyObject(Student student) {
+        name = student.name;
+        totalTimeCount = student.totalTimeCount;//时间表上的空闲时间
+        freeTimeCount = student.freeTimeCount;//还剩的空闲时间
+        fixedCount = student.fixedCount;//已经被安排了多少次
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                totalSchedule[i][j] = student.totalSchedule[i][j];//时间表
+                suitableSchedule[i][j] = student.suitableSchedule[i][j];//还剩时间表
+            }
+        }
+        for (Turn turn : suitableTurns) {
+            suitableTurns.add(turn);
+        }
+        for (Turn turn : fixedTurns) {
+            fixedTurns.add(turn);
         }
     }
 
@@ -70,6 +119,14 @@ public class Student {
         this.freeTimeCount = freeTimeCount;
     }
 
+    public int getStudentShouldBeFixed() {
+        return studentShouldBeFixed;
+    }
+
+    public void setStudentShouldBeFixed(int studentShouldBeFixed) {
+        this.studentShouldBeFixed = studentShouldBeFixed;
+    }
+
     void fixed(Turn turn) {
         suitableSchedule[turn.getWorkDay() - 1][turn.getDayTime() - 1] = false;
         fixedTurns.add(turn);
@@ -79,11 +136,12 @@ public class Student {
     }
 
 
+
     public boolean[][] getSuitableSchedule() {
         return suitableSchedule;
     }
 
-    int getFixedCount() {
+    public int getFixedCount() {
         return fixedCount;
     }
 
@@ -91,9 +149,10 @@ public class Student {
         suitableSchedule[workDay - 1][dayTime - 1] = true;
         totalSchedule[workDay - 1][dayTime - 1] = true;
         totalTimeCount++;
-        freeTimeCount ++;
+        freeTimeCount++;
         return this;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -111,7 +170,7 @@ public class Student {
         return suitableSchedule[--workDay][--dayTime];
     }
 
-    List<Turn> getFixedTurns() {
+    public List<Turn> getFixedTurns() {
         return fixedTurns;
     }
 
@@ -123,9 +182,8 @@ public class Student {
         return name;
     }
 
-
     @Override
     public String toString() {
-        return name + "��" + freeTimeCount + '-' + fixedCount + "��";
+        return name;
     }
 }

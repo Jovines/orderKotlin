@@ -1,7 +1,11 @@
+package order;
+
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Turn {
+public class Turn implements Serializable {
     private int workDay;
     private int dayTime;
     private List<Student> students;
@@ -18,9 +22,9 @@ public class Turn {
 
 
     /**
-     * »ñÈ¡µ±Ç°°à´ÎËùÓĞÑ§ÉúµÄ¿ÕÏĞ°à´ÎµÄ×ÜºÍ
+     * è·å–å½“å‰ç­æ¬¡æ‰€æœ‰å­¦ç”Ÿçš„ç©ºé—²ç­æ¬¡çš„æ€»å’Œ
      *
-     * @return Ñ§ÉúÃÇËùÊ£¿ÕÏĞÊ±¼ä×ÜºÍ
+     * @return å­¦ç”Ÿä»¬æ‰€å‰©ç©ºé—²æ—¶é—´æ€»å’Œ
      */
     int getAllStudentCanCount() {
         int n = 0;
@@ -47,9 +51,9 @@ public class Turn {
     }
 
     /**
-     * °Ñ°à´ÎºÍÑ§Éú½øĞĞ»¥Ïà°ó¶¨
+     * æŠŠç­æ¬¡å’Œå­¦ç”Ÿè¿›è¡Œäº’ç›¸ç»‘å®š
      *
-     * @param student ĞèÒª°ó¶¨µÄÑ§Éú
+     * @param student éœ€è¦ç»‘å®šçš„å­¦ç”Ÿ
      */
     void addFixedStudengt(Student student) {
 
@@ -89,29 +93,37 @@ public class Turn {
     }
 
 
+
     int getFixedStudentCount() {
         return fixedStudents.size();
     }
 
-    List<Student> getFixedStudents() {
+    public List<Student> getFixedStudents() {
         return fixedStudents;
     }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("ĞÇÆÚ¡¾")
-                .append(workDay)
-                .append("¡¿µÚ¡¾")
-                .append(dayTime)
-                .append("¡¿°à´ÎÓĞÑ§Éú£º");
-        if (students.size() == 0) {
-            stringBuilder.append("ÎŞ");
-        } else {
-            for (Student s :
-                    students) {
-                stringBuilder.append(s);
-            }
-        }
+        stringBuilder
+                .append("ç¬¬")
+                .append(dayTimeChange(this))
+                .append("èŠ‚è¯¾ï¼š");
         return stringBuilder.toString();
+    }
+
+
+    private String dayTimeChange(Turn turn) {
+        switch (turn.getDayTime()) {
+            case 1:
+                return "ä¸€äºŒ";
+            case 2:
+                return "ä¸‰å››";
+            case 3:
+                return "äº”å…­";
+            case 4:
+                return "ä¸ƒå…«";
+        }
+        return "å‘ç”Ÿé”™è¯¯";
     }
 }

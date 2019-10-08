@@ -1,3 +1,8 @@
+import order.Order;
+import order.OrderScene;
+import order.Student;
+import order.Turn;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -6,111 +11,210 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Main.init();
-        Order.getInstance().order();
-
-        List<Turn> t = Order.getInstance().getFixedTurns();
-//        List<Student> students = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            students.add(new Student(i+""));
-//        }
-//
-//        for (int i = 0,j=students.size(); i <j ; i++) {
-//            students.remove(0);
-//        }
-        System.out.println();
+        OrderScene orderScene = new OrderScene("");
+        orderScene.addStudentAll(init());
+        System.out.printf("");
     }
 
 
     static public List<Student> init() {
-        List<Student> students = Order.getInstance().getStudents();
-        students.add(new Student("C")
-                .add(1, 4)
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("ËÕÑÇÖİ")
                 .add(3, 1)
-                .add(5, 2)
-        );
-        students.add(new Student("V")
                 .add(4, 1)
-                .add(5, 3)
-                .add(5, 2)
-                .add(3, 1)
-        );
-        students.add(new Student("B")
-                .add(2, 4)
-                .add(2, 2)
-                .add(3, 1)
-                .add(4, 2)
-        );
-        students.add(new Student("X")
-                .add(1, 3)
-                .add(3, 1)
-                .add(2, 2)
                 .add(3, 2)
                 .add(5, 2)
-        );
-        students.add(new Student("Z")
-                .add(5, 3)
-                .add(3, 4)
-                .add(3, 1)
+                .add(4, 3)
                 .add(1, 4)
         );
-        students.add(new Student("L")
+        students.add(new Student("ÖìÓÜÌÎ")
+                .add(2, 3)
+                .add(4, 3)
+                .add(1, 4)
+                .add(3, 4)
+        );
+        students.add(new Student("Áõ´óÔó")
+                .add(2, 1)
+                .add(4, 1)
+                .add(1, 4)
+        );
+        students.add(new Student("Íõ¾ıÈ»")
+                .add(2, 1)
                 .add(4, 2)
-                .add(1, 3)
-                .add(5, 3)
-                .add(5, 2)
-                .add(2, 4)
-        );
-        students.add(new Student("K")
-                .add(1, 2)
-                .add(4, 1)
-                .add(2, 2)
-                .add(1, 3)
-        );
-        students.add(new Student("Q")
-                .add(3, 3)
-                .add(5, 2)
-                .add(1, 2)
-                .add(2, 4)
-        );
-        students.add(new Student("W")
-                .add(2, 4)
-                .add(4, 1)
-                .add(3, 3)
-                .add(2, 1)
-        );
-        students.add(new Student("E")
-                .add(2, 2)
-                .add(3, 4)
-                .add(2, 4)
-                .add(2, 3)
-        );
-        students.add(new Student("M")
-                .add(1, 3)
-                .add(1, 2)
-                .add(2, 1)
-                .add(5, 3)
-        );
-        students.add(new Student("R")
-                .add(2, 3)
-                .add(2, 4)
                 .add(1, 4)
-                .add(2, 1)
+                .add(4, 4)
         );
-        students.add(new Student("T")
+        students.add(new Student("ÕÅÎÄ½­")
+                .add(1, 1)
+                .add(2, 1)
+                .add(4, 1)
+                .add(2, 2)
+                .add(1, 4)
+        );
+        students.add(new Student("ÀîÔÂÔÂ")
+                .add(1, 1)
                 .add(3, 1)
-                .add(3, 2)
-                .add(5, 3)
-        );
-        students.add(new Student("Y")
-                .add(1, 4)
-                .add(4, 3)
-                .add(3, 3)
-                .add(1, 3)
-        );
-        students.add(new Student("U")
+                .add(5, 1)
                 .add(2, 2)
                 .add(4, 3)
+                .add(1, 4)
         );
+        students.add(new Student("¾´ÇåÇå")
+                .add(1, 1)
+                .add(4, 1)
+                .add(2, 1)
+                .add(5, 1)
+                .add(1, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ÀîöÎ")
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 2)
+                .add(4, 3)
+                .add(4, 4)
+        );
+        students.add(new Student("Íõ°Ä¸è")
+                .add(1, 4)
+                .add(3, 3)
+                .add(4, 3)
+        );
+        students.add(new Student("ÌÆöÎ")
+                .add(1, 3)
+                .add(1, 4)
+                .add(4, 2)
+                .add(4, 4)
+        );
+        students.add(new Student("ÖÜÏãÁ¯")
+                .add(1, 3)
+                .add(1, 4)
+                .add(4, 2)
+                .add(4, 4)
+        );
+        students.add(new Student("ÕÅ´¨")
+                .add(1, 4)
+                .add(4, 1)
+                .add(4, 4)
+                .add(5, 3)
+        );
+        students.add(new Student("ÁõºÆè¤")
+                .add(1, 1)
+                .add(2, 1)
+                .add(5, 2)
+                .add(3, 3)
+                .add(1, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ÏÄ D")
+                .add(1, 4)
+                .add(4, 3)
+        );
+        students.add(new Student("ÔøÆôºê")
+                .add(1, 1)
+                .add(3, 1)
+                .add(4, 2)
+                .add(3, 3)
+                .add(1, 3)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ºÎ½õÓî")
+                .add(1, 1)
+                .add(3, 1)
+                .add(4, 1)
+                .add(2, 2)
+                .add(4, 2)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("Àîäì")
+                .add(1, 1)
+                .add(3, 1)
+                .add(5, 1)
+                .add(2, 2)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ÂŞ¿¬Ô´")
+                .add(1, 1)
+                .add(2, 1)
+                .add(5, 1)
+                .add(4, 2)
+                .add(3, 3)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ÇØÑÒ½Ü")
+                .add(1, 1)
+                .add(2, 1)
+                .add(5, 1)
+                .add(4, 2)
+                .add(3, 3)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ÌÆ½ü")
+                .add(3, 1)
+                .add(5, 1)
+                .add(1, 3)
+                .add(2, 3)
+                .add(3, 3)
+                .add(1, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("Ğ»ÖĞÁÖ")
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("ĞÜĞ¡è±")
+                .add(1, 1)
+                .add(3, 1)
+                .add(2, 2)
+                .add(4, 2)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+        students.add(new Student("Ò¶Óñ·å")
+                .add(1, 1)
+                .add(3, 1)
+                .add(5, 1)
+                .add(1, 3)
+                .add(2, 3)
+                .add(3, 3)
+                .add(1, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+
+        students.add(new Student("ÕÅÅôÕ¹")
+                .add(1, 1)
+                .add(3, 1)
+                .add(5, 1)
+                .add(2, 2)
+                .add(3, 3)
+                .add(1, 4)
+                .add(2, 4)
+                .add(4, 4)
+                .add(5, 4)
+        );
+
         return students;
     }
 }
